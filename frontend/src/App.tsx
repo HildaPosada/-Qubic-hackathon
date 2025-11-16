@@ -16,23 +16,24 @@ function App() {
   const [securityScore, setSecurityScore] = useState<number | null>(null)
 
   const tabs = [
-    { id: 'editor' as Tab, label: 'Editor', icon: Code2, color: 'from-blue-500 to-cyan-500' },
-    { id: 'security' as Tab, label: 'Security', icon: Shield, color: 'from-red-500 to-orange-500' },
-    { id: 'deploy' as Tab, label: 'Deploy', icon: Rocket, color: 'from-green-500 to-emerald-500' },
-    { id: 'stats' as Tab, label: 'Stats', icon: BarChart3, color: 'from-purple-500 to-pink-500' },
+    { id: 'editor' as Tab, label: 'Editor', icon: Code2 },
+    { id: 'security' as Tab, label: 'Security', icon: Shield },
+    { id: 'deploy' as Tab, label: 'Deploy', icon: Rocket },
+    { id: 'stats' as Tab, label: 'Stats', icon: BarChart3 },
   ]
 
   return (
-    <div className="min-h-screen bg-dark-bg flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <Toaster
         position="top-right"
         toastOptions={{
           duration: 4000,
           style: {
-            background: '#111b3c',
-            color: '#e2e8f0',
-            border: '1px solid rgba(14, 165, 233, 0.2)',
-            borderRadius: '12px',
+            background: '#ffffff',
+            color: '#1f2937',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
           },
         }}
       />
@@ -43,7 +44,7 @@ function App() {
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar Navigation */}
-        <div className="w-20 bg-gradient-to-b from-dark-card to-dark-bg border-r border-qubic-500/20 flex flex-col items-center py-6 space-y-3">
+        <div className="w-16 bg-surface-50 border-r border-surface-200 flex flex-col items-center py-4 space-y-2">
           {tabs.map((tab) => {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
@@ -52,36 +53,20 @@ function App() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative group w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                className={`relative w-12 h-12 rounded-lg flex items-center justify-center transition-all ${
                   isActive
-                    ? `bg-gradient-to-br ${tab.color} shadow-glow text-white`
-                    : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                    ? 'bg-primary-600 text-white shadow-md'
+                    : 'text-surface-600 hover:text-primary-600 hover:bg-surface-100'
                 }`}
                 title={tab.label}
               >
-                {/* Tooltip */}
-                <div className="absolute left-16 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 bg-dark-card border border-qubic-500/30 text-gray-100 px-3 py-2 rounded-lg whitespace-nowrap text-sm font-semibold z-50">
-                  {tab.label}
-                  <div className="absolute right-full w-2 h-2 border-l-0 border-t-2 border-b-2 border-dark-card -translate-y-1/2 top-1/2"></div>
-                </div>
-
-                <Icon size={24} />
-
-                {/* Indicator */}
+                <Icon size={22} />
                 {isActive && (
-                  <div className="absolute -right-3 w-1 h-8 bg-gradient-to-b from-qubic-400 to-qubic-600 rounded-full shadow-glow"></div>
+                  <div className="absolute -right-2 w-1 h-6 bg-primary-600 rounded-full"></div>
                 )}
               </button>
             )
           })}
-
-          {/* Spacer */}
-          <div className="flex-1"></div>
-
-          {/* Bottom Indicator */}
-          <div className="w-10 h-10 rounded-xl bg-dark-bg border border-qubic-500/20 flex items-center justify-center text-qubic-400 text-xs font-bold">
-            Q
-          </div>
         </div>
 
         {/* Main Panel */}
@@ -102,41 +87,32 @@ function App() {
             )}
           </div>
 
-          {/* Right Panel - AI Assistant (always visible) */}
-          <div className="w-96 flex flex-col overflow-hidden border-l border-qubic-500/20">
+          {/* Right Panel - AI Assistant */}
+          <div className="w-96 flex flex-col overflow-hidden border-l border-surface-200">
             <AIAssistant code={code} setCode={setCode} />
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-dark-card to-dark-bg border-t border-qubic-500/20 px-8 py-4 text-sm backdrop-blur-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8">
+      <footer className="border-t border-surface-200 bg-surface-50 px-6 py-4 text-sm">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <div className="status-indicator status-indicator-success animate-pulse"></div>
-              <span className="font-semibold text-gray-300">Connected to Qubic Testnet</span>
+              <div className="status-dot status-dot-active"></div>
+              <span className="font-medium text-surface-700">Connected to Qubic Testnet</span>
             </div>
-            <div className="text-gray-500 text-xs">
-              <span className="inline-flex items-center space-x-1">
-                <span>⚡</span>
-                <span>15.5M TPS</span>
-              </span>
-              <span className="mx-2">•</span>
-              <span className="inline-flex items-center space-x-1">
-                <span>💰</span>
-                <span>Feeless</span>
-              </span>
-              <span className="mx-2">•</span>
-              <span className="inline-flex items-center space-x-1">
-                <span>✅</span>
-                <span>Instant Finality</span>
-              </span>
+            <div className="text-surface-600 text-xs space-x-2">
+              <span>⚡ 15.5M TPS</span>
+              <span>•</span>
+              <span>💰 Zero Fees</span>
+              <span>•</span>
+              <span>✅ Instant Finality</span>
             </div>
           </div>
 
-          <div className="text-gray-500 text-xs">
-            Powered by <span className="font-semibold text-qubic-400">Qubic Blockchain</span>
+          <div className="text-surface-500 text-xs">
+            Powered by <span className="font-semibold text-primary-600">Qubic</span>
           </div>
         </div>
       </footer>
