@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { BarChart3, TrendingUp, Zap, DollarSign } from 'lucide-react'
+import { api } from '../services/api'
 
 export default function StatsPanel() {
   const [stats, setStats] = useState<any>(null)
 
   useEffect(() => {
-    fetch('/api/stats')
-      .then(res => res.json())
+    api.getStats()
       .then(data => setStats(data.stats))
+      .catch(err => console.error('Failed to load stats:', err))
   }, [])
 
   if (!stats) {

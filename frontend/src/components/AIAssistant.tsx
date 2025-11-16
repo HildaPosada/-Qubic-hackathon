@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Send, Sparkles, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
+import { api } from '../services/api'
 
 interface AIAssistantProps {
   code: string
@@ -33,13 +34,7 @@ export default function AIAssistant({ code, setCode }: AIAssistantProps) {
     setIsGenerating(true)
 
     try {
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: userPrompt })
-      })
-
-      const data = await response.json()
+      const data = await api.generate(userPrompt)
 
       if (data.success) {
         setCode(data.code)

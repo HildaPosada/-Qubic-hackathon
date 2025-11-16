@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import MonacoEditor from '@monaco-editor/react'
 import { Play, Save, FileCode } from 'lucide-react'
 import toast from 'react-hot-toast'
+import { api } from '../services/api'
 
 interface EditorProps {
   code: string
@@ -33,12 +34,7 @@ struct QubicContract {
   const handleCompile = async () => {
     setIsCompiling(true)
     try {
-      const response = await fetch('/api/compile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code })
-      })
-      const data = await response.json()
+      const data = await api.compile(code)
 
       if (data.success) {
         toast.success('✅ Compilation successful!')
