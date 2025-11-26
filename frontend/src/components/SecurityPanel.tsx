@@ -187,14 +187,14 @@ export default function SecurityPanel({ code, securityScore, setSecurityScore }:
                     className={`card p-4 border-l-4 ${getSeverityColor(issue.severity)}`}
                   >
                     <div className="flex items-start justify-between mb-2">
-                      <span className="text-sm font-semibold text-surface-900">
+                      <span className="text-sm font-bold text-surface-900">
                         {getSeverityLabel(issue.severity)} • {issue.category}
                       </span>
                     </div>
                     <p className="text-sm text-surface-700 mb-2">{issue.message}</p>
                     {issue.fix && (
-                      <div className="mt-2 p-2 bg-white rounded text-xs text-surface-600 border border-surface-100">
-                        <span className="font-medium">Fix: </span>{issue.fix}
+                      <div className="mt-2 p-3 bg-white rounded-lg text-xs text-surface-600 border border-surface-100">
+                        <span className="font-bold">Fix: </span>{issue.fix}
                       </div>
                     )}
                   </div>
@@ -208,7 +208,7 @@ export default function SecurityPanel({ code, securityScore, setSecurityScore }:
                 <h3 className="text-lg font-bold text-surface-900">Recommendations</h3>
                 <div className="space-y-2">
                   {auditResult.recommendations.map((rec: string, idx: number) => (
-                    <div key={idx} className="flex items-start space-x-3 p-4 card">
+                    <div key={idx} className="flex items-start space-x-3 p-4 card border border-surface-100 shadow-sm">
                       <CheckCircle size={18} className="text-secondary-600 mt-0.5 flex-shrink-0" />
                       <span className="text-sm text-surface-700">{rec}</span>
                     </div>
