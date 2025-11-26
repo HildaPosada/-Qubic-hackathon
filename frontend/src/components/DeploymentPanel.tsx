@@ -91,10 +91,10 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
                   <button
                     key={net.id}
                     onClick={() => setNetwork(net.id)}
-                    className={`card p-6 text-left transition-all ${
+                    className={`card p-6 text-left transition-all border ${
                       network === net.id
                         ? 'border-primary-300 bg-primary-50 shadow-md'
-                        : 'hover:border-surface-300 hover:shadow-md'
+                        : 'border-surface-100 hover:border-primary-200 hover:shadow-md'
                     }`}
                   >
                     <div className="flex items-start justify-between mb-2">
@@ -120,10 +120,10 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
                 ].map((benefit, idx) => {
                   const Icon = benefit.icon
                   return (
-                    <div key={idx} className="flex items-start space-x-4 p-4 card">
-                      <Icon size={20} className="text-primary-600 mt-0.5" />
+                    <div key={idx} className="flex items-start space-x-4 p-4 card border border-surface-100 shadow-sm hover:shadow-md transition-all">
+                      <Icon size={20} className="text-primary-600 mt-0.5 flex-shrink-0" />
                       <div>
-                        <div className="font-semibold text-surface-900">{benefit.label}</div>
+                        <div className="font-bold text-surface-900">{benefit.label}</div>
                         <div className="text-sm text-surface-600">{benefit.desc}</div>
                       </div>
                     </div>
@@ -136,7 +136,7 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
             <button
               onClick={handleDeploy}
               disabled={isDeploying || !code.trim()}
-              className="btn btn-primary w-full py-3 text-base flex items-center justify-center space-x-2"
+              className="w-full py-3 text-base rounded-lg bg-gradient-to-r from-secondary-600 to-primary-600 text-white font-medium hover:shadow-lg transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
             >
               {isDeploying ? (
                 <>
