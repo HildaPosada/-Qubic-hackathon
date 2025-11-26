@@ -71,10 +71,10 @@ export default function StatsPanel() {
             ].map((metric, idx) => {
               const Icon = metric.icon
               return (
-                <div key={idx} className="card p-5 text-center">
+                <div key={idx} className="card p-5 text-center border border-surface-100 shadow-sm hover:shadow-md transition-all">
                   <Icon size={24} className="text-primary-600 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-surface-900 mb-1">{metric.value}</div>
-                  <div className="text-xs text-surface-500 font-medium">{metric.label}</div>
+                  <div className="text-xs text-surface-500 font-bold">{metric.label}</div>
                 </div>
               )
             })}
@@ -82,7 +82,7 @@ export default function StatsPanel() {
         </section>
 
         {/* Economic Impact */}
-        <section className="bg-primary-50 border border-primary-200 rounded-xl p-8">
+        <section className="bg-gradient-to-br from-primary-50 to-accent-50 border border-primary-200 rounded-xl p-8 shadow-sm hover:shadow-md transition-all">
           <div className="flex items-start space-x-3 mb-4">
             <DollarSign size={24} className="text-primary-600" />
             <h3 className="text-lg font-bold text-surface-900">Economic Impact</h3>
@@ -99,7 +99,7 @@ export default function StatsPanel() {
             ].map((item, idx) => (
               <div key={idx} className="text-center">
                 <div className="text-xl font-bold text-primary-700 mb-1">{item.value}</div>
-                <div className="text-xs text-surface-600 font-medium">{item.label}</div>
+                <div className="text-xs text-surface-700 font-bold">{item.label}</div>
               </div>
             ))}
           </div>
