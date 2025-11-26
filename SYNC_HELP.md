@@ -1,14 +1,34 @@
 # Sync Troubleshooting Guide
 
+## 🔥 Git Log Issue? Use This First!
+
+If you're experiencing git log hanging or sync issues:
+
+```bash
+# Fix all git configuration issues
+chmod +x fix-git.sh
+./fix-git.sh
+
+# Then use quick sync (no log issues)
+chmod +x quick-sync.sh
+./quick-sync.sh
+```
+
 ## Quick Sync Commands
 
-### Option 1: Use the sync script (easiest)
+### Option 1: Quick Sync (RECOMMENDED - No log issues)
+```bash
+chmod +x quick-sync.sh
+./quick-sync.sh
+```
+
+### Option 2: Full sync script (with logs)
 ```bash
 chmod +x sync.sh
 ./sync.sh
 ```
 
-### Option 2: Manual sync
+### Option 3: Manual sync
 ```bash
 # Add all changes
 git add .
@@ -24,6 +44,27 @@ git push origin main
 ```
 
 ## Common Sync Issues & Solutions
+
+### Issue 0: Git log hangs or freezes (COMMON!)
+**Problem:** Running `git log` or sync scripts hang/freeze
+**Solution:**
+```bash
+# Quick fix
+chmod +x fix-git.sh
+./fix-git.sh
+
+# Then use quick-sync instead
+chmod +x quick-sync.sh
+./quick-sync.sh
+```
+
+**Why it happens:** Git's default pager (less/more) can hang in some terminals
+
+**Alternative manual fix:**
+```bash
+git config --global core.pager cat
+git config --local core.pager cat
+```
 
 ### Issue 1: "Permission denied" on sync.sh
 **Solution:**
