@@ -154,7 +154,7 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
         ) : (
           <>
             {/* Success State */}
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 animate-scale-in">
               <div className="inline-block p-4 rounded-full bg-secondary-100 mb-4">
                 <CheckCircle size={40} className="text-secondary-600" />
               </div>
@@ -164,26 +164,26 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
 
             {/* Deployment Info */}
             <div className="space-y-4 mb-8">
-              <div className="card p-4">
-                <div className="text-xs font-semibold text-surface-500 mb-2 uppercase">Contract Address</div>
+              <div className="card p-4 border border-surface-100 shadow-sm">
+                <div className="text-xs font-bold text-surface-600 mb-2 uppercase">Contract Address</div>
                 <div className="flex items-center space-x-2">
                   <code className="flex-1 text-sm font-mono text-primary-600 truncate">{deployment.address}</code>
                   <button
                     onClick={() => copyToClipboard(deployment.address)}
-                    className="btn btn-secondary p-2"
+                    className="px-2 py-2 rounded-lg border border-surface-200 text-surface-600 hover:bg-surface-50 transition-all"
                   >
                     <Copy size={16} />
                   </button>
                 </div>
               </div>
 
-              <div className="card p-4">
-                <div className="text-xs font-semibold text-surface-500 mb-2 uppercase">Transaction Hash</div>
+              <div className="card p-4 border border-surface-100 shadow-sm">
+                <div className="text-xs font-bold text-surface-600 mb-2 uppercase">Transaction Hash</div>
                 <div className="flex items-center space-x-2">
                   <code className="flex-1 text-sm font-mono text-primary-600 truncate">{deployment.transaction_hash}</code>
                   <button
                     onClick={() => copyToClipboard(deployment.transaction_hash)}
-                    className="btn btn-secondary p-2"
+                    className="px-2 py-2 rounded-lg border border-surface-200 text-surface-600 hover:bg-surface-50 transition-all"
                   >
                     <Copy size={16} />
                   </button>
@@ -199,14 +199,14 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
                 { label: 'Gas Used', value: 'Free' },
                 { label: 'Time', value: '< 1 sec' },
               ].map((stat, idx) => (
-                <div key={idx} className="card p-4">
-                  <div className="text-xs text-surface-500 font-semibold mb-1">{stat.label}</div>
+                <div key={idx} className="card p-4 border border-surface-100 shadow-sm">
+                  <div className="text-xs text-surface-600 font-bold mb-1">{stat.label}</div>
                   <div className="text-lg font-bold text-surface-900 capitalize">{stat.value}</div>
                 </div>
               ))}
             </div>
 
-            <button className="btn btn-secondary w-full flex items-center justify-center space-x-2">
+            <button className="w-full py-3 rounded-lg border border-surface-200 text-surface-700 font-medium hover:bg-surface-50 transition-all flex items-center justify-center space-x-2">
               <ExternalLink size={18} />
               <span>View on Explorer</span>
             </button>
