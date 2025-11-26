@@ -50,12 +50,14 @@ export default function DeploymentPanel({ code }: DeploymentPanelProps) {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-gradient-to-b from-white to-surface-50">
       {/* Header */}
-      <div className="border-b border-surface-200 px-6 py-6">
+      <div className="border-b border-surface-100 px-6 py-6 bg-white">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Rocket size={24} className="text-secondary-600" />
+          <div className="flex items-center space-x-4">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary-100 to-primary-100 flex items-center justify-center">
+              <Rocket size={24} className="text-secondary-600" />
+            </div>
             <div>
               <h2 className="text-2xl font-bold text-surface-900">Deploy Contract</h2>
               <p className="text-sm text-surface-500">Deploy to Qubic blockchain</p>
