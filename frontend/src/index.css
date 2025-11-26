@@ -69,12 +69,12 @@
 
   /* Card Styles */
   .card {
-    @apply bg-white border border-surface-200 rounded-xl shadow-sm;
+    @apply bg-white border border-surface-100 rounded-xl shadow-sm;
     @apply transition-all duration-200;
   }
 
   .card:hover {
-    @apply border-surface-300 shadow-hover;
+    @apply border-primary-200 shadow-md;
   }
 
   .card-lg {
@@ -82,7 +82,7 @@
   }
 
   .card-elevated {
-    @apply shadow-lg;
+    @apply shadow-lg border-surface-100 hover:border-primary-200;
   }
 
   /* Input Styles */
