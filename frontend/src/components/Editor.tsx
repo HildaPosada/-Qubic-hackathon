@@ -61,14 +61,16 @@ struct QubicContract {
   }
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-gradient-to-b from-white to-surface-50">
       {/* Toolbar */}
-      <div className="border-b border-surface-200 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <FileCode size={20} className="text-primary-600" />
+      <div className="border-b border-surface-100 px-6 py-4 flex items-center justify-between bg-white">
+        <div className="flex items-center space-x-4">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
+            <FileCode size={20} className="text-primary-600" />
+          </div>
           <div>
-            <div className="text-sm font-semibold text-surface-900">contract.cpp</div>
-            <div className="text-xs text-surface-500">C++ • Smart Contract</div>
+            <div className="text-sm font-bold text-surface-900">contract.cpp</div>
+            <div className="text-xs text-surface-500 font-medium">C++ • Smart Contract</div>
           </div>
         </div>
 
@@ -76,7 +78,11 @@ struct QubicContract {
           <button
             onClick={handleCompile}
             disabled={isCompiling}
-            className={`btn ${hasCompiled ? 'bg-secondary-600 hover:bg-secondary-700 text-white' : 'btn-primary'} text-sm flex items-center space-x-2`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 transition-all duration-200 ${
+              hasCompiled
+                ? 'bg-secondary-600 hover:bg-secondary-700 text-white shadow-md'
+                : 'bg-gradient-to-r from-primary-600 to-accent-600 hover:shadow-lg text-white'
+            } disabled:opacity-70`}
           >
             {hasCompiled ? (
               <>
@@ -98,13 +104,13 @@ struct QubicContract {
 
           <button
             onClick={copyCode}
-            className="btn btn-secondary text-sm flex items-center space-x-2"
+            className="px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 bg-white border border-surface-200 text-surface-700 hover:bg-surface-50 hover:border-surface-300 transition-all"
           >
             <Copy size={16} />
             <span>Copy</span>
           </button>
 
-          <button className="btn btn-secondary text-sm flex items-center space-x-2">
+          <button className="px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 bg-white border border-surface-200 text-surface-700 hover:bg-surface-50 hover:border-surface-300 transition-all">
             <Save size={16} />
             <span>Save</span>
           </button>
@@ -144,16 +150,16 @@ struct QubicContract {
       </div>
 
       {/* Status Bar */}
-      <div className="border-t border-surface-200 px-6 py-3 text-sm bg-surface-50 flex items-center justify-between">
-        <div className="flex items-center space-x-6 text-surface-600">
+      <div className="border-t border-surface-100 px-6 py-3 text-sm bg-white flex items-center justify-between">
+        <div className="flex items-center space-x-8 text-surface-600">
           <span>Lines: <span className="font-semibold text-surface-900">{code.split('\n').length}</span></span>
           <span>Characters: <span className="font-semibold text-surface-900">{code.length}</span></span>
-          <span>Language: <span className="font-semibold text-primary-600">C++</span></span>
+          <span>Language: <span className="font-semibold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">C++</span></span>
         </div>
 
         <div className="flex items-center space-x-2">
-          <div className="status-dot status-dot-active"></div>
-          <span className="text-primary-600 font-medium">Qubic SDK Ready</span>
+          <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></div>
+          <span className="font-medium bg-gradient-to-r from-secondary-600 to-primary-600 bg-clip-text text-transparent">Qubic SDK Ready</span>
         </div>
       </div>
     </div>
