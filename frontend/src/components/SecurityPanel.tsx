@@ -80,12 +80,14 @@ export default function SecurityPanel({ code, securityScore, setSecurityScore }:
   }
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-gradient-to-b from-white to-surface-50">
       {/* Header */}
-      <div className="border-b border-surface-200 px-6 py-6">
+      <div className="border-b border-surface-100 px-6 py-6 bg-white">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Shield size={24} className="text-primary-600" />
+          <div className="flex items-center space-x-4">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center">
+              <Shield size={24} className="text-primary-600" />
+            </div>
             <div>
               <h2 className="text-2xl font-bold text-surface-900">Security Audit</h2>
               <p className="text-sm text-surface-500">AI-powered vulnerability detection</p>
@@ -95,7 +97,7 @@ export default function SecurityPanel({ code, securityScore, setSecurityScore }:
           <button
             onClick={handleAudit}
             disabled={isAuditing || !code.trim()}
-            className="btn btn-primary flex items-center space-x-2"
+            className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary-600 to-accent-600 text-white font-medium hover:shadow-lg transition-all disabled:opacity-50 flex items-center space-x-2"
           >
             {isAuditing ? (
               <>
