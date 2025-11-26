@@ -247,6 +247,18 @@
     animation: slide-up 0.4s ease-out;
   }
 
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
   /* Utility Classes */
   .no-select {
     @apply select-none;
