@@ -10,6 +10,18 @@
 >
 > Democratizing Qubic smart contract development with AI-powered code generation, real-time security auditing, and instant deployment.
 
+# 🚀 Built by **Team Status Code 200**
+
+Meet our amazing team that collaborated on this project:
+
+| Member | Image | LinkedIn |
+|--------|--------|----------|
+| **Hilda Posada** | <img src="assets/hilda-posada.jpeg" width="80" style="border-radius: 50%;" /> | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/hildaposada/) |
+| **Ahmed Faraz** | <img src="assets/ahmed-faraz.jpeg" width="80" style="border-radius: 50%;" /> | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/aahmedfaraz/) |
+| **Fahad Khan** | <img src="assets/fahad-khan.jpeg" width="80" style="border-radius: 50%;" /> | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/fahad-cybersecurity-ai/) |
+| **Mamadou Ba** | <img src="assets/mamadou-ba.jpeg" width="80" style="border-radius: 50%;" /> | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/ba-mamadou2004/) |
+| **Anshika Chouhan** | <img src="assets/anshika-chouhan.png" width="80" style="border-radius: 50%;" /> | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/anshika-c-78a6532a1/) |
+
 ---
 
 ## 📋 Table of Contents
