@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Temporary fix scripts
+fix-*.sh
+push-*.sh
+sync*.sh
+quick-*.sh
+complete-*.sh
+emergency-*.sh
+master-*.sh
+test-*.sh
+use-*.sh
+cleanup-*.sh
