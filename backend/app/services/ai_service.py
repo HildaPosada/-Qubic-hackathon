@@ -18,14 +18,26 @@ class AIService:
 
     def __init__(self):
         self.mock_mode = settings.MOCK_MODE
+        self.provider = settings.AI_PROVIDER
 
         if not self.mock_mode:
             try:
-                import openai
-                self.client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
-                logger.info("✅ OpenAI client initialized")
+                if self.provider == "openai":
+                    import openai
+                    self.client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+                    logger.info("✅ OpenAI client initialized")
+                elif self.provider == "huggingface":
+                    from huggingface_hub import InferenceClient
+                    self.client = InferenceClient(token=settings.HUGGINGFACE_API_KEY)
+                    logger.info("✅ Hugging Face client initialized")
+                elif self.provider == "anthropic":
+                    import anthropic
+                    self.client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+                    logger.info("✅ Anthropic client initialized")
+                else:
+                    raise ValueError(f"Unsupported AI provider: {self.provider}")
             except Exception as e:
-                logger.warning(f"Failed to initialize OpenAI client: {e}. Falling back to mock mode.")
+                logger.warning(f"Failed to initialize {self.provider} client: {e}. Falling back to mock mode.")
                 self.mock_mode = True
 
     async def generate_contract(
