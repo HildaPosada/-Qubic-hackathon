@@ -19,26 +19,40 @@ class AIService:
     def __init__(self):
         self.mock_mode = settings.MOCK_MODE
         self.provider = settings.AI_PROVIDER
+        self.client = None
+
+        logger.info(f"🔧 Initializing AI Service - Mock Mode: {self.mock_mode}, Provider: {self.provider}")
 
         if not self.mock_mode:
             try:
                 if self.provider == "openai":
+                    if not settings.OPENAI_API_KEY:
+                        raise ValueError("OPENAI_API_KEY not set")
                     import openai
                     self.client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
                     logger.info("✅ OpenAI client initialized")
+                    
                 elif self.provider == "huggingface":
+                    if not settings.HUGGINGFACE_API_KEY:
+                        raise ValueError("HUGGINGFACE_API_KEY not set")
                     from huggingface_hub import InferenceClient
                     self.client = InferenceClient(token=settings.HUGGINGFACE_API_KEY)
                     logger.info("✅ Hugging Face client initialized")
+                    
                 elif self.provider == "anthropic":
+                    if not settings.ANTHROPIC_API_KEY:
+                        raise ValueError("ANTHROPIC_API_KEY not set")
                     import anthropic
                     self.client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
                     logger.info("✅ Anthropic client initialized")
                 else:
                     raise ValueError(f"Unsupported AI provider: {self.provider}")
             except Exception as e:
-                logger.warning(f"Failed to initialize {self.provider} client: {e}. Falling back to mock mode.")
+                logger.error(f"❌ Failed to initialize {self.provider} client: {e}")
+                logger.warning("⚠️ Falling back to mock mode")
                 self.mock_mode = True
+        else:
+            logger.info("🎭 Running in MOCK MODE")
 
     async def generate_contract(
         self,
